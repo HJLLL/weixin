@@ -7,7 +7,7 @@
 */
 
 
-import {imgurl} from 'src/config/env';
+import {imgurl} from 'src/assets/js/config/env';
 export const burse={
 	"腾讯服务":[
 		{

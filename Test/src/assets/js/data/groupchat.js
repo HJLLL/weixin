@@ -10,7 +10,7 @@
 *
 *
 */
-import {imgurl} from 'src/config/env';
+import {imgurl} from 'src/assets/js/config/env';
 export const groupchat={
 	"petname":"微信交流群~",
 	"grouphead":[

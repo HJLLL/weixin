@@ -25,7 +25,7 @@
 				</svg>
 			</router-link>
 		</section>
-		<section class="addPart" v-if="add" @click="controlShow">
+		<section class="addPart"  @click="controlShow">
 			<svg class="icon-search">
 			    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add"></use>
 			</svg>	
@@ -37,9 +37,7 @@
 				<ul>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<svg fill="#fff"> 
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wxspeak"></use>
-							</svg>
+							<span>&#xe61c;</span>
 						</section>
 						<section class="selectext">
 							发起群聊
@@ -47,9 +45,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<svg fill="#fff"> 
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#addfriend"></use>
-							</svg>
+							<span>&#xe60f;</span>
 						</section>
 						<section class="selectext">
 							添加朋友
@@ -57,9 +53,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<svg fill="#fff"> 
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#onesweep"></use>
-							</svg>
+							<span>&#xe623;</span>
 						</section>
 						<section class="selectext">
 							扫一扫
@@ -67,9 +61,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<svg fill="#fff"> 
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#receipt"></use>
-							</svg>
+							<span>&#xe600;</span>
 						</section>
 						<section class="selectext">
 							收付款
@@ -77,9 +69,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<svg fill="#fff"> 
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#help"></use>
-							</svg>
+							<span>&#xe647;</span>
 						</section>
 						<section class="selectext">
 							帮助与反馈
@@ -129,6 +119,7 @@
 </script>
 <style lang="scss" scoped>
 	@import "../../assets/css/public";
+	@import "../../assets/css/iconfont";
 	header{
 		@include widthHeight(100%,2.06933rem);
 		background:$black;

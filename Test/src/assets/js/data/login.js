@@ -18,7 +18,7 @@
 *	imgurl:图片地址
 */	
 
-import {imgurl} from 'src/config/env';
+import {imgurl} from 'src/assets/js/config/env';
 
 export const userInfo = {
 	"wxid":"812571880",
