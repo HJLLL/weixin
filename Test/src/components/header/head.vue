@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<span class="iconfont">&#xe60f;</span>
 		<section class="logoPart" v-if="logoPart">
 			微信
 		</section>
@@ -37,7 +38,7 @@
 				<ul>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<span>&#xe61c;</span>
+							<span class="iconfont">&#xe61c;</span>
 						</section>
 						<section class="selectext">
 							发起群聊
@@ -45,7 +46,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<span>&#xe60f;</span>
+							<span class="iconfont">&#xe60f;</span>
 						</section>
 						<section class="selectext">
 							添加朋友
@@ -53,7 +54,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<span>&#xe623;</span>
+							<span class="iconfont">&#xe623;</span>
 						</section>
 						<section class="selectext">
 							扫一扫
@@ -61,7 +62,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<span>&#xe600;</span>
+							<span class="iconfont">&#xe600;</span>
 						</section>
 						<section class="selectext">
 							收付款
@@ -69,7 +70,7 @@
 					</router-link>
 					<router-link to='' tag="li" class="selectpart_li">
 						<section class="selectsvg">
-							<span>&#xe647;</span>
+							<span class="iconfont">&#xe647;</span>
 						</section>
 						<section class="selectext">
 							帮助与反馈
@@ -103,7 +104,7 @@
 		},
 		methods:{
 			controlShow(){
-				this.addthing=true;
+				this.addthing=! this.addthing;
 			},
 			controlhide(){
 				this.addthing=false;
