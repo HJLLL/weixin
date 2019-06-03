@@ -6,6 +6,7 @@
   url-loader('../fonts/iconfont.ttf?t=1559190763541') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   url-loader('../fonts/iconfont.svg?t=1559190763541#iconfont') format('svg'); /* iOS 4.1- */
 }
+/*将url替换成url-loader对于css的使用*/
 
 .iconfont {
   font-family: "iconfont" !important;
