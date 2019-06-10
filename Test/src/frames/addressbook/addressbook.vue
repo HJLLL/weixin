@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<!-- 联系人列表 -->
-		<section class="contacts" ref="contactList">
+		<section class="contacts" ref="contactList" style="text-align: left;">
 			<div class="contact_top">
 				<ul>
 					<router-link to="" tag="li" class="contacts_li">
@@ -92,7 +92,6 @@
 				</section> -->
 			</div>
 		</section>
-		<section class="peoplenum">{{peoplenum}}位联系人</section>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
@@ -100,7 +99,9 @@
 </template>
 <script>
 	import {mapMutations} from 'vuex'
-	//import {animate} from 'src/assets/js/config/mUtils.js'
+	import {animate} from '@/assets/js/config/mUtils'
+	import {assd} from '@/assets/js/getData'
+	
 	export default{
 		name:'AddressBook',
 		data(){
@@ -111,11 +112,11 @@
 				peoplenum:null,		//通讯录人数
 			}
 		},
-		/*mounted(){
+		mounted(){
 			contactList().then((res) => {
 				this.contactList=res;
 			})
-		},*/
+		},
 		methods:{
 			...mapMutations([
 			    'SAVE_MESSAGE'
@@ -159,25 +160,22 @@
 <style lang="scss" scoped>
 	@import "../../assets/css/public";
 	.contacts{
+		text-align:left;
 		width:100%;
 		background:#fff;
 		padding-top:2.06933rem;
-		.contacts_top{
+		.contact_top{
 			ul{
-				width:14rem;
+				padding-left:0.5973333333rem;
 				margin:0 auto;
 				-webkit-overflow-scrolling: touch; 
 				.contacts_li{
 					width:100%;
-					padding:0.3413333333rem 0;
-					border-bottom:1px solid #e0e0e0;
-					
-					align-items:center;
+					padding:0.5413333333rem 0;
 					.contacts_img{
 					
 					}
 					.contacts_text{
-						text-align:left;
 						
 					}
 				}
@@ -189,6 +187,8 @@
 		.contacts_middle{
 			.contacts_middle_ul{
 				.contacts_middle_tile{
+					
+					padding:0.3413333333rem 0;
 					@include sizeColor(0.64rem,#2a2a2a);
 					display:block;
 					background:#ebebeb;
@@ -205,7 +205,6 @@
 							width:100%;
 							padding:0.3413333333rem 0;
 							border-bottom:1px solid #e0e0e0;
-							align-items:center;
 							.contacts_img{
 								svg{
 								}

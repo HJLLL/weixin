@@ -17,7 +17,7 @@
 *
 *	imgurl:图片地址
 */	
-import {imgurl} from 'src/assets/js/config/env';
+import {imgurl} from '@/assets/js/config/env';
 
 
 //同学录数据

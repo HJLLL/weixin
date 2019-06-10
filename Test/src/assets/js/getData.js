@@ -8,7 +8,7 @@ import * as bursetData from './data/burse'
 import * as albumData from './data/album'
 import * as groupData from './data/groupchat'
 import * as chatmoreData from './data/chatmore'
-import fetch from '../config/fetch.js'
+import fetch from './config/fetch.js'
 
 
 const setpromise = data => {

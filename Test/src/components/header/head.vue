@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<span class="iconfont">&#xe60f;</span>
 		<section class="logoPart" v-if="logoPart">
 			微信
 		</section>

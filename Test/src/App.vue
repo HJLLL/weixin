@@ -2,7 +2,6 @@
   <div id="app">
     <!--<img src="./assets/logo.png">-->
     <router-view/>
-    <span class="iconfont dd">&#xe61c;</span>
   </div>
 </template>
 

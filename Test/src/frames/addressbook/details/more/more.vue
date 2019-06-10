@@ -2,7 +2,9 @@
 	<section class="child_page">
 		<section class="more">
 			<router-link tag="div" to="">
-				<span>我和</span><span v-if="sex">他</span><span v-if="!sex">她</span><span>的共同群聊</span>
+				<p>
+					<span>我和</span><span v-if="sex">他</span><span v-if="!sex">她</span><span>的共同群聊</span>
+				</p>
 			</router-link>
 			<div>
 				<span>个性签名</span><span>{{infor.sdasd}}</span>
@@ -50,8 +52,9 @@
 			@include justify;
 			padding:0 0.59rem;
 			border-bottom:1px solid #e2e2e2;
+			font-size:0;
 			span{
-				text-align:left;font-size:0;
+				text-align:left;
 				display:inline-block;
 				display:inline;
 				@include sizeColor(0.7rem,#333);
