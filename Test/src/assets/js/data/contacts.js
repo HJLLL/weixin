@@ -60,7 +60,7 @@ A:[
 		"Messageblob":""
 	}
 ],
-B:[],
+/*B:[],
 C:[
 	{
 		"wxid":"caiawei",
@@ -437,5 +437,5 @@ Z:[
 		"Messageblob":"",
 	},
 	
-]
+]*/
 }

@@ -60,7 +60,7 @@
 						<div class="contacts_middle_tile">星标朋友</div>
 						<route-link to="/addressbook/details" tag="li" class="contacts_li" v-for="(item,index) in starFriend" @click.native='detailMessage(item)' :key="index">
 							<div class="personlist_img">
-								<img :src="item.headurl" alt="">
+								<img :src="item.headurl" alt="" />
 							</div>
 							<div class="personlist_name ellipsis">
 								{{item.remarks ? item.remarks : item.petname}}
@@ -75,7 +75,7 @@
 						<ul>
 							<router-link to="/addressbook/details" tag="li" v-for="(item,index) in value" @click.native='detailMessage(item)' :key="index">
 								<div class="personlist_img">
-									<img :src="item.headurl" alt="">
+									<img :src="item.headurl" alt=""/>
 								</div>
 								<div class="personlist_name ellipsis">
 									{{item.remarks ? item.remarks : item.petname}}
@@ -90,7 +90,17 @@
 					</dl>
 					<p>#</p>
 				</section> -->
+				<ul class="contacts_bottom_ul" ref="addlist">
+					<li v-for="(value, key, index) in manageaddress" :key="key" class="addlistLi">
+						<h1>{{key}}</h1>
+						<div v-for="(item,index) in value":key="index">
+							<div>1</div>
+							<img :src=require("item.headurl")>
+						</div>
+					</li>
+				</ul>
 			</div>
+			<img src="@/assets/img/zhaosong.jpg">
 		</section>
 		<transition name="router-show">
 			<router-view></router-view>
@@ -100,8 +110,7 @@
 <script>
 	import {mapMutations} from 'vuex'
 	import {animate} from '@/assets/js/config/mUtils'
-	import {assd} from '@/assets/js/getData'
-	
+	import {contactList} from '@/assets/js/getData'
 	export default{
 		name:'AddressBook',
 		data(){
@@ -123,7 +132,7 @@
 			]),
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
-			},
+			}
 			// getHear(value){
 			// 	this.atpresent=value;
 			// 	this.$nextTick(() =>{ //滚动到通讯录分组的地方
@@ -148,6 +157,9 @@
 					if(this.contactList[String.fromCharCode(i)]){
 						if(this.contactList[String.fromCharCode(i)].length>0){
 							addresslist[String.fromCharCode(i)]=this.contactList[String.fromCharCode(i)];
+							for(let j=0;j<this.contactList[String.fromCharCode(i)].length;j++){
+								console.log(this.contactList[String.fromCharCode(i)][j].headurl);
+							}
 							this.peoplenum += Number(this.contactList[String.fromCharCode(i)].length);
 						}
 					}
