@@ -74,11 +74,13 @@
 						<h1>{{key}}</h1>
 						<ul>
 							<router-link to="/addressbook/details" tag="li" v-for="(item,index) in value" @click.native='detailMessage(item)' :key="index">
-								<div class="personlist_img">
-									<img :src="item.headurl" alt=""/>
-								</div>
-								<div class="personlist_name ellipsis">
-									{{item.remarks ? item.remarks : item.petname}}
+								<div class="dd">
+									<div class="personlist_img">
+										<img :src="item.headurl" alt=""/>
+									</div>
+									<div class="personlist_name ellipsis">
+										{{item.remarks ? item.remarks : item.petname}}
+									</div>
 								</div>
 							</router-link>
 						</ul>
@@ -90,17 +92,7 @@
 					</dl>
 					<p>#</p>
 				</section> -->
-				<ul class="contacts_bottom_ul" ref="addlist">
-					<li v-for="(value, key, index) in manageaddress" :key="key" class="addlistLi">
-						<h1>{{key}}</h1>
-						<div v-for="(item,index) in value":key="index">
-							<div>1</div>
-							<img :src=require("item.headurl")>
-						</div>
-					</li>
-				</ul>
 			</div>
-			<img src="@/assets/img/zhaosong.jpg">
 		</section>
 		<transition name="router-show">
 			<router-view></router-view>
@@ -211,24 +203,12 @@
 				li{
 					width:100%;
 					ul{
-						width:14rem;
-						margin:0 auto;
-						.contacts_li{
-							width:100%;
-							padding:0.3413333333rem 0;
-							border-bottom:1px solid #e0e0e0;
-							.contacts_img{
-								svg{
-								}
+						li{
+							div{
+								float:left;
 							}
-							.contacts_text{
-								margin-left:0.5333333333rem;
-							}
-
 						}
-						.contacts_li:last-child{
-							border:0;
-						}
+						
 					}
 				}
 			}
@@ -246,53 +226,33 @@
 				}
 			}
 		}
-		.contacts_bottom{
-			
+		.content_bottom{
 			.contacts_bottom_ul{
-				
-				li{
-					width:100%;
+				.addlistLi{
 					h1{
-						display:block;
-						background:#ebebeb;
-						line-height:0.9813333333rem;
-						padding-left:0.5973333333rem;
+						color:#CCCCCC;
+						font-size:1rem;
 					}
 					ul{
-						width:14rem;
-						margin:0 auto;
 						li{
-							padding:0.3413333333rem 0;
-							border-bottom:1px solid #e0e0e0;
-							align-items:center;
+							list-style: none;
+							.personlist_img,personlist_name{
+								float:left;
+							}
 							.personlist_img{
-								img{
-								}
+								width: 1.5786666667rem;
+							    height: 1.5786666667rem;
+							    img{
+							    	width:100%;
+							    	height:100%;
+							    }
 							}
 							.personlist_name{
-								margin-left:0.5333333333rem;
-								width:12.6rem;
-
+								margin-left:1.5333333333rem;
+							    height: 1.6786666667rem;
 							}
-
-						}
-						li:last-child{
-							border:0;
 						}
 					}
-				}
-			}
-			.list_guide{
-				position: fixed;
-				top:50%;
-				transform:translateY(-50%);
-				right:0.2986666667rem;
-				dl{
-					dd{
-						text-align:center;
-					}
-				}
-				p{
 				}
 			}
 		}

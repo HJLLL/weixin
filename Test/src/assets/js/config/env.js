@@ -12,7 +12,7 @@
 // 	imgurl 
 // }
 
-const imgurl = '@/assets/img/';
+const imgurl = '@/../static/img/';
 let baseUrl;
 
 if (process.env.NODE_ENV == 'development') {
