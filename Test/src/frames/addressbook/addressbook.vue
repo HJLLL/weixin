@@ -93,7 +93,7 @@
 			</div>
 		</section>
 		<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
-		<alphabet></alphabet>
+		<alphabet :rolls="rolls"></alphabet>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
