@@ -35,10 +35,8 @@
 						</div>
 					</router-link>
 					<router-link to="" tag="li" class="contacts_li">
-						<!-- <div class="contacts_img">
-							<svg>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#accounts"></use>
-							</svg>
+						<!--<div class="contacts_img">
+							<img src="@/../static/img/chuqiao.jpg">
 						</div> -->
 						<div class="contacts_text">
 							公众号
@@ -48,7 +46,7 @@
 			</div>
 			<div class="contacts_middle">
 				<ul class="contacts_middle_ul">
-						<div class="contacts_middle_tile">我的企业</div>
+						<div class="contacts_middle_tile" v-if="myCompany.length>0">我的企业</div>
 						<route-link to="/addressbook/details" tag="li" class="contacts_li" v-for="(item,index) in myCompany" @click.native='detailMessage(item)' :key="index">
 							<div class="personlist_img">
 								<img :src="item.headurl" alt="">
@@ -57,7 +55,7 @@
 								{{item.remarks ? item.remarks : item.petname}}
 							</div>
 						</route-link>
-						<div class="contacts_middle_tile">星标朋友</div>
+						<div class="contacts_middle_tile" v-if="starFriend.length>0">星标朋友</div>
 						<route-link to="/addressbook/details" tag="li" class="contacts_li" v-for="(item,index) in starFriend" @click.native='detailMessage(item)' :key="index">
 							<div class="personlist_img">
 								<img :src="item.headurl" alt="" />
@@ -94,6 +92,7 @@
 				</section> -->
 			</div>
 		</section>
+		<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
@@ -149,9 +148,6 @@
 					if(this.contactList[String.fromCharCode(i)]){
 						if(this.contactList[String.fromCharCode(i)].length>0){
 							addresslist[String.fromCharCode(i)]=this.contactList[String.fromCharCode(i)];
-							for(let j=0;j<this.contactList[String.fromCharCode(i)].length;j++){
-								console.log(this.contactList[String.fromCharCode(i)][j].headurl);
-							}
 							this.peoplenum += Number(this.contactList[String.fromCharCode(i)].length);
 						}
 					}
@@ -164,92 +160,107 @@
 <style lang="scss" scoped>
 	@import "../../assets/css/public";
 	.contacts{
+		background-color:#CCCCCC;
 		text-align:left;
 		width:100%;
-		background:#fff;
-		padding-top:2.06933rem;
+		/*padding-top:2.06933rem;*/
 		.contact_top{
+			background-color:white;
 			ul{
-				padding-left:0.5973333333rem;
-				margin:0 auto;
-				-webkit-overflow-scrolling: touch; 
-				.contacts_li{
-					width:100%;
-					padding:0.5413333333rem 0;
+				li{
+					list-style: none;
+					margin-left:0.3rem;
+					display:flex;
+					align-items:center;
 					.contacts_img{
-					
+					    img{
+					    	width:100%;
+					    	height:100%;
+					    	border-radius:5px;
+					    	width: 2.5786666667rem;
+						    height: 2.5786666667rem;
+					    }
 					}
 					.contacts_text{
-						
+						margin-left:1rem;
+						flex:none;
+						width:100%;
+					    height: 3.6786666667rem;
+					    line-height:3.6786666667rem;
+					    @include sizeColor(1.2rem,#2a2a2a);
+						border-bottom:1px solid #CCCCCC;top: 50%;
 					}
-				}
-				.contacts_li:last-child{
-					border:0;
 				}
 			}
 		}
 		.contacts_middle{
 			.contacts_middle_ul{
 				.contacts_middle_tile{
-					
-					padding:0.3413333333rem 0;
-					@include sizeColor(0.64rem,#2a2a2a);
-					display:block;
-					background:#ebebeb;
-					line-height:0.9813333333rem;
-					text-align:left;
-					padding-left:0.5973333333rem;
+					margin-left:0.3rem;
+					@include sizeColor(1rem,#2a2a2a);
+					width:100%;
 				}
 				li{
-					width:100%;
-					ul{
-						li{
-							div{
-								float:left;
-							}
-						}
-						
+					background-color:white;
+					list-style: none;
+					margin-left:0.3rem;
+					display:flex;
+					align-items:center;
+					.personlist_img{
+					    img{
+					    	width:100%;
+					    	height:100%;
+					    	border-radius:5px;
+						    @include widthHeight(2.5786666667rem,2.5786666667rem);
+					    }
 					}
-				}
-			}
-			.list_guide{
-				position: fixed;
-				top:50%;
-				transform:translateY(-50%);
-				right:0.2986666667rem;
-				dl{
-					dd{
-						text-align:center;
+					.personlist_name{
+						margin-left:1rem;
+						flex:none;
+						width:100%;
+					    height: 3.6786666667rem;
+					    line-height:3.6786666667rem;
+					    @include sizeColor(1.2rem,#2a2a2a);
+						border-bottom:1px solid #CCCCCC;top: 50%;
 					}
-				}
-				p{
 				}
 			}
 		}
+		
 		.content_bottom{
 			.contacts_bottom_ul{
 				.addlistLi{
 					h1{
-						color:#CCCCCC;
-						font-size:1rem;
+						margin-left:0.3rem;
+					    @include sizeColor(1rem,#2a2a2a);
+						width:100%;
 					}
 					ul{
 						li{
+							background-color:white;
 							list-style: none;
-							.personlist_img,personlist_name{
-								float:left;
-							}
-							.personlist_img{
-								width: 1.5786666667rem;
-							    height: 1.5786666667rem;
-							    img{
-							    	width:100%;
-							    	height:100%;
-							    }
-							}
-							.personlist_name{
-								margin-left:1.5333333333rem;
-							    height: 1.6786666667rem;
+							.dd{/*flex布局水平垂直居中*/
+								margin-left:0.3rem;
+								display:flex;
+								align-items:center;
+								.personlist_img{
+								    img{
+								    	width:100%;
+								    	height:100%;
+								    	border-radius:5px;
+								    	width: 2.5786666667rem;
+									    height: 2.5786666667rem;
+								    }
+								}
+								.personlist_name{
+									margin-left:1rem;
+									flex:none;
+									width:100%;
+								    height: 3.6786666667rem;
+								    line-height:3.6786666667rem;
+					    			@include sizeColor(1.2rem,#2a2a2a);
+									border-bottom:1px solid #CCCCCC;top: 50%;
+								}
 							}
 						}
 					}
@@ -261,6 +272,9 @@
 		padding-bottom:3rem;
 		text-align:center;
 		margin-top:.5rem;
+		background-color:#CCCCCC;
+		text-align:center;
+		line-height:3.6786666667rem;
 	}
 
 </style>
