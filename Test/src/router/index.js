@@ -7,6 +7,7 @@ import FindAndMe from '@/components/findandme/findandme'
 import AddressBook from '@/frames/addressbook/addressbook'
 import Details from '@/frames/addressbook/details/details'
 import More from '@/frames/addressbook/details/more/more'
+//import Alphabet from '@/frames/addressbook/details/alphabet'
 
 Vue.use(Router)
 
@@ -40,5 +41,11 @@ export default new Router({
 		path: '/More',
 		name: 'More',
 		component: More
-	}]
+	}
+	//,{
+	// 	path: '/Alphabet',
+	// 	name: 'Alphabet',
+	// 	component: Alphabet
+	// }
+	]
 })

@@ -93,6 +93,7 @@
 			</div>
 		</section>
 		<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
+		<alphabet></alphabet>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
@@ -102,14 +103,19 @@
 	import {mapMutations} from 'vuex'
 	import {animate} from '@/assets/js/config/mUtils'
 	import {contactList} from '@/assets/js/getData'
+	import Alphabet from './details/Alphabet'
 	export default{
 		name:'AddressBook',
+		components: {
+			Alphabet
+		},
 		data(){
 			return {
 				contactList:{},		//所有通讯录列表
 				myCompany:[],       //我所在的公司
 				starFriend:[],      //星标朋友
 				peoplenum:null,		//通讯录人数
+				rolls:[],			//滚动条数据
 			}
 		},
 		mounted(){
@@ -151,6 +157,7 @@
 							this.peoplenum += Number(this.contactList[String.fromCharCode(i)].length);
 						}
 					}
+					this.rolls.push(String.fromCharCode(i));
 				}
 				return addresslist;
 			}
