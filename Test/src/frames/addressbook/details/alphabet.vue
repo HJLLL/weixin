@@ -2,8 +2,8 @@
 	<ul class="list">
 		<li 
 			class="item" 
-			v-for="item of letters" 
-			:key="item"
+			v-for="(item,index) of letters" 
+			:key="index"
 			:ref="item"
 			@click="handleLetterClick"
 			@touchstart.prevent="handleTouchStart"
@@ -21,7 +21,7 @@
 export default {
 	name: 'Alphabet',
 	props: {
-		cities: Object
+		rolls: Array
 	},
 	data () {
 		return {
@@ -32,15 +32,19 @@ export default {
 	},
 	updated () {
 		/*初始化的时候就将A到上面的距离算出来*/
-		this.startY = this.$refs['A'][0].offsetTop
+		this.startY = this.$refs['A'][0].offsetTop;
+		console.log(this.$refs['A']);
+		console.log("距离"+this.startY);
 	},
 	computed: {
 		letters () {
 			const letters = []
-			for(let i in this.cities) {
-				letters.push(i)
-			}
-			return letters
+			/*for(let i in this.rolls) {
+				console.log(rolls[i]);
+				letters.push(rolls[i]);
+				
+			}*/
+			return this.rolls
 		}
 	},
 	methods: {
@@ -66,8 +70,9 @@ export default {
 			this.touchStatus = false
 		},
 		handleLetterClick (e) {
-			console.log(e.target.innerText)
-			this.$emit('change',e.target.innerText)
+			console.log('世道');
+			console.log(e.target.innerText);
+			this.$emit('change',e.target.innerText);
 		}
 	}
 }

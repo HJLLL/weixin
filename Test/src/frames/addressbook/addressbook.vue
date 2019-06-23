@@ -93,7 +93,7 @@
 			</div>
 		</section>
 		<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
-		<alphabet :rolls="rolls"></alphabet>
+		<alphabet :rolls="rolls" @change="handleLetterChange"></alphabet>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
@@ -116,6 +116,7 @@
 				starFriend:[],      //星标朋友
 				peoplenum:null,		//通讯录人数
 				rolls:[],			//滚动条数据
+				roll:''				//当前定位
 			}
 		},
 		mounted(){
@@ -129,6 +130,10 @@
 			]),
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
+			},
+			handleLetterChange(roll){
+				console.log("roll:"+roll);
+				this.roll=roll;
 			}
 			// getHear(value){
 			// 	this.atpresent=value;
