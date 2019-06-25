@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<head logo-part="true" search-part="true" add="true"></head>
 		<!-- 联系人列表 -->
 		<section class="contacts" ref="contactList" style="text-align: left;">
 			<div class="contact_top">
@@ -66,12 +67,14 @@
 						</route-link>
 				</ul>
 			</div>
-			<div class="content_bottom">
-				<ul class="contacts_bottom_ul" ref="addlist">
+			<div class="content_bottom" ref="wrapper">
+				<ul class="contacts_bottom_ul">
 					<li v-for="(value, key, index) in manageaddress" :key="key" class="addlistLi">
-						<h1>{{key}}</h1>
+						<h1 :ref="key">{{key}}</h1>
 						<ul>
-							<router-link to="/addressbook/details" tag="li" v-for="(item,index) in value" @click.native='detailMessage(item)' :key="index">
+							<router-link to="/addressbook/details" tag="li" v-for="(item,index) in value" 
+										 @click.native='detailMessage(item)' :key="index"
+										 >
 								<div class="dd">
 									<div class="personlist_img">
 										<img :src="item.headurl" alt=""/>
@@ -84,30 +87,31 @@
 						</ul>
 					</li>
 				</ul>
-				<!-- <section class="list_guide">
-					<dl>
-						<dd v-for="(value, index) in sortlist" :key="index" @click="getHear(value)">{{value}}</dd>
-					</dl>
-					<p>#</p>
-				</section> -->
+				<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
 			</div>
 		</section>
-		<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
+		
 		<alphabet :rolls="rolls" @change="handleLetterChange"></alphabet>
+		<foot></foot>
 		<transition name="router-show">
 			<router-view></router-view>
 		</transition>
 	</section>
 </template>
 <script>
+	import BScroll from 'better-scroll'
+	import Head from '@/components/header/head'
 	import {mapMutations} from 'vuex'
 	import {animate} from '@/assets/js/config/mUtils'
 	import {contactList} from '@/assets/js/getData'
+	import Foot from '@/components/footer/foot'
 	import Alphabet from './details/Alphabet'
 	export default{
 		name:'AddressBook',
 		components: {
-			Alphabet
+			Alphabet,
+			Foot,
+			Head
 		},
 		data(){
 			return {
@@ -122,7 +126,21 @@
 		mounted(){
 			contactList().then((res) => {
 				this.contactList=res;
-			})
+			}),
+			this.scroll = new BScroll(this.$refs.wrapper, {click: true})
+		},
+		watch: {
+			roll () {/*监听roll的改变做的事*/
+				if (this.roll) {
+					/*通过this.$refs获取到this.roll这个字母对应class等于area的区域，
+					 ref是通过循环输出的得到的是一个数组不是标准的dom元素，但是BScroll的
+					 scrollToElement中需要是dom的元素或者是dom的选择器*/
+					const element = this.$refs[this.roll][0];
+					console.log("需要滚动到的位置");
+					console.log(element);
+					this.scroll.scrollToElement(element);
+				}
+			}
 		},
 		methods:{
 			...mapMutations([
@@ -132,7 +150,7 @@
 				this.SAVE_MESSAGE(item);
 			},
 			handleLetterChange(roll){
-				console.log("roll:"+roll);
+				console.log("handleLetterChange:"+roll);
 				this.roll=roll;
 			}
 			// getHear(value){
@@ -155,14 +173,15 @@
 		computed:{
 			manageaddress(){
 				let addresslist={};
+				this.rolls.length=0;
 				for(let i=65; i <= 90; i++){
 					if(this.contactList[String.fromCharCode(i)]){
 						if(this.contactList[String.fromCharCode(i)].length>0){
+							this.rolls.push(String.fromCharCode(i));
 							addresslist[String.fromCharCode(i)]=this.contactList[String.fromCharCode(i)];
 							this.peoplenum += Number(this.contactList[String.fromCharCode(i)].length);
 						}
 					}
-					this.rolls.push(String.fromCharCode(i));
 				}
 				return addresslist;
 			}

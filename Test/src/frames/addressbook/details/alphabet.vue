@@ -1,4 +1,5 @@
 <template>
+	<!--说明：当前使用到的BScoll是一个在子标签中滚动的实例所以需要将需要进行滚动的那块数据单独写成一个子标签进行调试【个人理解】-->
 	<ul class="list">
 		<li 
 			class="item" 
@@ -6,8 +7,8 @@
 			:key="index"
 			:ref="item"
 			@click="handleLetterClick"
-			@touchstart.prevent="handleTouchStart"
-			@touchmove="handleTouchMove"
+			@touchstart="handleTouchStart"
+			@touchmove.prevent="handleTouchMove"
 			@touchend="handleTouchEnd"
 		>
 		<!--.prevent事件修饰符可以阻止touchstart的默认行为-->
@@ -33,12 +34,10 @@ export default {
 	updated () {
 		/*初始化的时候就将A到上面的距离算出来*/
 		this.startY = this.$refs['A'][0].offsetTop;
-		console.log(this.$refs['A']);
-		console.log("距离"+this.startY);
 	},
 	computed: {
 		letters () {
-			const letters = []
+			var letter = []
 			/*for(let i in this.rolls) {
 				console.log(rolls[i]);
 				letters.push(rolls[i]);
@@ -49,7 +48,7 @@ export default {
 	},
 	methods: {
 		handleTouchStart () {
-			this.touchStatus = true
+			this.touchStatus = true;
 		},
 		handleTouchMove (e) {
 			if(this.touchStatus) {
@@ -67,30 +66,27 @@ export default {
 			}
 		},
 		handleTouchEnd () {
-			this.touchStatus = false
+			this.touchStatus = false;
 		},
 		handleLetterClick (e) {
-			console.log('世道');
-			console.log(e.target.innerText);
 			this.$emit('change',e.target.innerText);
 		}
 	}
 }
 </script>
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 	/*@import '~styles/varibles.styl';*/
 	/*统一大概是2.5倍的算*/
-	.list
-		display: flex
-		flex-direction: column
-		justify-content: center
-		position: absolute
-		top: 4.0rem
-		right: 0
-		bottom: 0
-		width: 1.5rem
-		.item
-			line-height: 1.1rem
-			text-align: center
-			color: $bgColor
+	.list{
+		position: absolute;
+		top: 4.0rem;
+		right: 0;
+		bottom: 0;
+		width: 1.5rem;
+		.item{
+			line-height: 1.1rem;
+			text-align: center;
+			color: #00bcd4;
+		}
+	}
 </style>

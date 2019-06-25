@@ -12,6 +12,7 @@
   "dependencies": {
     "ajv": "^6.9.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "better-scroll": "^1.15.2",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "node-sass": "^4.12.0",

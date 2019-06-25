@@ -85,7 +85,7 @@
 	export default{
 		data(){
 			return{
-				addthing:false,
+				addthing:true,
 			}
 		},
 		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person', "search", "clickrefresh"],

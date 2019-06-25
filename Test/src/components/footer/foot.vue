@@ -1,5 +1,5 @@
 <template>
-	<div class="foot">
+	<div class="footer">
 		<!-- 微信底部导航SVG存放 -->
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0;visibility:hidden">
 		 	<defs>
@@ -41,10 +41,10 @@
 			<router-link to="" tag="li" class="footer_li">
 				<section class="li_svg">
 					<svg>
-			    		<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('addressbook') !== -1 ? '#addresslight' : '#address'"></use>
+			    		<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('AddressBook') !== -1 ? '#addresslight' : '#address'"></use>
 					</svg>
 				</section>
-				<section class="li_text" :class="$route.path.indexOf('addressbook') !== -1
+				<section class="li_text" :class="$route.path.indexOf('AddressBook') !== -1
 				? 'colortext' : 'color' ">通讯录</section>
 			</router-link>
 			<router-link to="" tag="li" class="footer_li">
