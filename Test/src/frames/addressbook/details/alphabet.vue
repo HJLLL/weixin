@@ -78,7 +78,9 @@ export default {
 	/*@import '~styles/varibles.styl';*/
 	/*统一大概是2.5倍的算*/
 	.list{
-		position: absolute;
+		z-index:200;
+		color:#fff;
+		position: fixed;
 		top: 4.0rem;
 		right: 0;
 		bottom: 0;

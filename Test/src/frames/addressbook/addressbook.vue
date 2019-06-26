@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<head logo-part="true" search-part="true" add="true"></head>
+		<head-top :logopart="'addressbook'" :searchpart="false" :add="true"></head-top>
 		<!-- 联系人列表 -->
 		<section class="contacts" ref="contactList" style="text-align: left;">
 			<div class="contact_top">
@@ -100,7 +100,7 @@
 </template>
 <script>
 	import BScroll from 'better-scroll'
-	import Head from '@/components/header/head'
+	import headTop from '@/components/header/head'
 	import {mapMutations} from 'vuex'
 	import {animate} from '@/assets/js/config/mUtils'
 	import {contactList} from '@/assets/js/getData'
@@ -111,7 +111,7 @@
 		components: {
 			Alphabet,
 			Foot,
-			Head
+			headTop
 		},
 		data(){
 			return {
@@ -191,10 +191,10 @@
 <style lang="scss" scoped>
 	@import "../../assets/css/public";
 	.contacts{
-		background-color:#CCCCCC;
+		background-color:$bgcolor;
 		text-align:left;
 		width:100%;
-		/*padding-top:2.06933rem;*/
+		padding-top:3.06933rem;
 		.contact_top{
 			background-color:white;
 			ul{

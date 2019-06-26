@@ -1,9 +1,15 @@
 <template>
-	<div>
-		<section class="logoPart" v-if="logoPart">
-			微信
+	<div class="header">
+		<section class="logoname" v-if="logopart=='wechat'">
+			<b>微信</b>
 		</section>
-		<section class="logoPart" v-if="crossover">
+		<div class="logoname" v-if="logopart=='addressbook'">
+			<b>通讯录</b>
+		</div>
+		<section class="logoname" v-if="logopart=='find'">
+			<b>发现</b>
+		</section>
+		<section class="logoto" v-if="crossover">
 			<section class="goback" @click="goBackThing">
 				<svg fill="#fff"> 
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
@@ -18,7 +24,7 @@
 				</span>
 			</section>
 		</section>
-		<section class="searchPart" v-if="searchPart">
+		<section class="logosearch" v-if="searchpart">
 			<router-link to='/search' class="searchlink">
 				<svg class="icon-search" fill="#fff">
 				    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
@@ -31,7 +37,7 @@
 			</svg>	
 		</section>
 		<!-- 下拉框 -->
-		<section class="selectpart" v-show="addthing">
+		<section class="logoselect" v-show="addthing">
 			<div class="cover" @click="controlhide"></div>
 			<div class="selectlist">
 				<ul>
@@ -85,15 +91,14 @@
 	export default{
 		data(){
 			return{
-				addthing:true,
+				addthing:false,
 			}
 		},
-		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person', "search", "clickrefresh"],
+		props: ['logopart', 'crossover', 'searchpart', 'add', 'person', "search", "clickrefresh"],
 		created(){
 
 		},
 		mounted(){
-			
 		},
 		components:{
 
@@ -120,7 +125,20 @@
 <style lang="scss" scoped>
 	@import "../../assets/css/public";
 	@import "../../assets/css/iconfont";
-	header{
+	.header{
+		@include widthHeight(100%,3.06933rem);
+		background:$bgcolor;
+		z-index:200;
+		position: fixed;
+		display:flex;
+		align-items:center;
+		.logoname{
+			margin-left:0.3rem;
+			font-weight:bold;
+		}
+	}
+	/*
+	head{
 		@include widthHeight(100%,2.06933rem);
 		background:$black;
 		z-index:200;
@@ -131,7 +149,7 @@
 			@include sizeColor(0.704rem,#fff);
 			left:0.5973333333rem;
 			@include justify(flex-start);
-			align-items:center;
+			align-items:left;
 			.goback{
 				@include widthHeight(1rem,1rem);
 				svg{
@@ -215,5 +233,5 @@
 			}
 			
 		}
-	}
+	}*/
 </style>
