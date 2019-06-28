@@ -9,7 +9,10 @@
 		<section class="logoname" v-if="logopart=='find'">
 			<b>发现</b>
 		</section>
-		<section class="logoto" v-if="crossover">
+		<section class="searchpart">
+			
+		</section>
+		<!--<section class="logoto" v-if="crossover">
 			<section class="goback" @click="goBackThing">
 				<svg fill="#fff"> 
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
@@ -17,7 +20,7 @@
 			</section>
 			<section class="wall">|</section>
 			<slot name='searchpart'></slot>
-			<!-- <slot name='clickrefresh' ></slot> -->
+			<slot name='clickrefresh' ></slot> 
 			<section class="covers_name" v-if="$route.path.indexOf('search') == -1" @click="refreshPage">
 				<span class="ellipsis">
 					{{crossover}}
@@ -35,7 +38,7 @@
 			<svg class="icon-search">
 			    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add"></use>
 			</svg>	
-		</section>
+		</section>-->
 		<!-- 下拉框 -->
 		<section class="logoselect" v-show="addthing">
 			<div class="cover" @click="controlhide"></div>
