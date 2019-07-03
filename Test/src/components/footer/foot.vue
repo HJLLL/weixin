@@ -1,6 +1,5 @@
 <template>
 	<div class="footer">
-		<i class="iconfont iconxiaoxi"></i>
 		<!-- 微信底部导航SVG存放 -->
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0;visibility:hidden">
 		 	<defs>

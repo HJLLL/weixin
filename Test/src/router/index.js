@@ -7,6 +7,7 @@ import FindAndMe from '@/components/findandme/findandme'
 import AddressBook from '@/frames/addressbook/addressbook'
 import Details from '@/frames/addressbook/details/details'
 import More from '@/frames/addressbook/details/more/more'
+import Search from '@/components/search/search'
 //import Alphabet from '@/frames/addressbook/details/alphabet'
 
 Vue.use(Router)
@@ -42,10 +43,10 @@ export default new Router({
 		name: 'More',
 		component: More
 	}
-	//,{
-	// 	path: '/Alphabet',
-	// 	name: 'Alphabet',
-	// 	component: Alphabet
-	// }
+	,{
+		path: '/Search',
+		name: 'Search',
+		component: Search
+	}
 	]
 })

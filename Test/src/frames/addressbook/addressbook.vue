@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<alphabet :rolls="rolls" @change="handleLetterChange"></alphabet>
 		<head-top :logopart="'addressbook'" :searchpart="false" :add="true"></head-top>
 		<!-- 联系人列表 -->
 		<section class="contacts" ref="contactList" style="text-align: left;">
@@ -90,8 +91,6 @@
 				<section class="peoplenum">{{peoplenum}}&nbsp;位联系人</section>
 			</div>
 		</section>
-		
-		<alphabet :rolls="rolls" @change="handleLetterChange"></alphabet>
 		<foot></foot>
 		<transition name="router-show">
 			<router-view></router-view>
@@ -102,7 +101,7 @@
 	import BScroll from 'better-scroll'
 	import headTop from '@/components/header/head'
 	import {mapMutations} from 'vuex'
-	import {animate} from '@/assets/js/config/mUtils'
+	//import {animate} from '@/assets/js/config/mUtils'
 	import {contactList} from '@/assets/js/getData'
 	import Foot from '@/components/footer/foot'
 	import Alphabet from './details/Alphabet'
@@ -136,7 +135,7 @@
 					 ref是通过循环输出的得到的是一个数组不是标准的dom元素，但是BScroll的
 					 scrollToElement中需要是dom的元素或者是dom的选择器*/
 					const element = this.$refs[this.roll][0];
-					console.log("需要滚动到的位置");
+					console.log("需要滚动到的位置："+this.roll);
 					console.log(element);
 					this.scroll.scrollToElement(element);
 				}
