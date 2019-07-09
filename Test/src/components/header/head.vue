@@ -9,7 +9,7 @@
 		<section class="logoname" v-if="logopart=='find'">
 			<b>发现</b>
 		</section>
-		<router-link class="searchpart" to="/Search">
+		<router-link to="search" class="searchpart">
 			<svg t="1561952088613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2012" width="1.224rem" height="1.224rem">
 				<path d="M771.25783666 736.98493668l212.48227556 212.43372999a24.27259221 24.27259221 0 1 1-34.32144555 34.32144555l-212.43372999-212.43373a424.77036999 424.77036999 0 1 1 34.32144554-34.32144554zM454.25777778 830.48296334a376.22518557 376.22518557 0 1 0 0-752.45037112 376.22518557 376.22518557 0 0 0 0 752.45037112z" fill="#333333" p-id="2013">
 				</path>

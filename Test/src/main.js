@@ -7,9 +7,13 @@ import VueRouter from 'vue-router'
 import store from './store'
 import './assets/css/iconfont.css'
 import './assets/css/public.scss'
+import $ from 'jquery'
+import VueResource from 'vue-resource'
+
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
+Vue.use(VueResource);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
