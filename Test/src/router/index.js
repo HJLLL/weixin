@@ -8,6 +8,7 @@ import AddressBook from '@/frames/addressbook/addressbook'
 import Details from '@/frames/addressbook/details/details'
 import More from '@/frames/addressbook/details/more/more'
 import Search from '@/components/search/search'
+import Chatmessage from '@/frames/conversation/chatmessage/chatmessage'
 //import Alphabet from '@/frames/addressbook/details/alphabet'
 
 Vue.use(Router)
@@ -42,11 +43,13 @@ export default new Router({
 		path: '/More',
 		name: 'More',
 		component: More
-	}
-	,{
+	},{
 		path: '/search',
 		name: 'Search',
 		component: Search
-	}
-	]
+	},{
+		path: '/chatmessage',
+		name: 'Chatmessage',
+		component: Chatmessage
+	}]
 })

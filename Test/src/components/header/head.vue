@@ -1,5 +1,10 @@
 <template>
 	<div class="header">
+		<section class="goback" v-on:click="goback" v-if="returnto">
+				<svg t="1562122389541" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1976" width="1.224rem" height="1.224rem">
+					<path d="M719.3 959.9L271.4 512 719.3 64.1l33.3 33.2L337.9 512l414.7 414.7z" p-id="1977"></path>
+				</svg>
+			</section>
 		<section class="logoname" v-if="logopart=='wechat'">
 			<b>微信</b>
 		</section>
@@ -9,13 +14,16 @@
 		<section class="logoname" v-if="logopart=='find'">
 			<b>发现</b>
 		</section>
-		<router-link to="search" class="searchpart">
+		<section class="logoname" v-if="logopart=='chatmassage'">
+			<b>聊天信息</b>
+		</section>
+		<router-link to="search" class="searchpart" v-if="search">
 			<svg t="1561952088613" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2012" width="1.224rem" height="1.224rem">
 				<path d="M771.25783666 736.98493668l212.48227556 212.43372999a24.27259221 24.27259221 0 1 1-34.32144555 34.32144555l-212.43372999-212.43373a424.77036999 424.77036999 0 1 1 34.32144554-34.32144554zM454.25777778 830.48296334a376.22518557 376.22518557 0 1 0 0-752.45037112 376.22518557 376.22518557 0 0 0 0 752.45037112z" fill="#333333" p-id="2013">
 				</path>
 			</svg>		
 		</router-link>
-		<section class="addclick" @click="controlShow">
+		<section class="addclick" @click="controlShow" v-if="add">
 			<svg t="1561952669778" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="1.524rem" height="1.524rem">
 				<path d="M510.352119 912.416237c-220.548741 0-399.339141-178.82643-399.339141-399.403615S289.803378 113.622281 510.352119 113.622281c220.550637 0 399.341037 178.813156 399.341037 399.390341S730.902756 912.416237 510.352119 912.416237zM510.352119 163.544178c-192.982281 0-349.421037 156.461511-349.421037 349.468444S317.369837 862.482963 510.352119 862.482963s349.421037-156.463407 349.421037-349.470341S703.3344 163.544178 510.352119 163.544178zM660.104533 537.979259 535.313067 537.979259l0 124.81043c0 13.778489-11.174874 24.957156-24.959052 24.957156-13.784178 0-24.957156-11.178667-24.957156-24.957156l0-124.81043-124.795259 0c-13.784178 0-24.959052-11.17677-24.959052-24.966637 0-13.780385 11.17677-24.957156 24.959052-24.957156l124.795259 0 0-124.816119c0-13.778489 11.174874-24.951467 24.957156-24.951467 13.786074 0 24.959052 11.171081 24.959052 24.951467l0 124.816119 124.791467 0c13.786074 0 24.959052 11.17677 24.959052 24.957156C685.063585 526.802489 673.890607 537.979259 660.104533 537.979259z" fill="#333333" p-id="2725">
 				</path>
@@ -49,7 +57,7 @@
 			</svg>	
 		</section>-->
 		<!-- 下拉框 -->
-		<section class="logoselect" v-show="addthing">
+		<section class="logoselect" v-if="addthing">
 			<div class="cover" @click="controlhide"></div>
 			<div class="selectlist">
 				<ul>
@@ -122,7 +130,7 @@
 				crossover:false,
 			}
 		},
-		props: ['logopart', 'searchpart', 'add', 'person', "search", "clickrefresh"],
+		props: ['logopart', 'searchpart', 'add', 'person', "search", "clickrefresh","returnto"],
 		created(){
 
 		},
@@ -149,7 +157,10 @@
 			},
 			refreshPage(){//点击头部刷新页面
 				this.$emit('refreshPage');
-			}
+			},
+			goback(){
+				this.$router.go(-1);
+			},
 		}
 	}
 </script>

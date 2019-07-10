@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<alphabet :rolls="rolls" @change="handleLetterChange"></alphabet>
-		<head-top :logopart="'addressbook'" :searchpart="false" :add="true"></head-top>
+		<head-top :logopart="'addressbook'" :searchpart="false" :add="true" :search="true"></head-top>
 		<!-- 联系人列表 -->
 		<section class="contacts" ref="contactList" style="text-align: left;">
 			<div class="contact_top">

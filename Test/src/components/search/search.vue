@@ -54,6 +54,8 @@
 				result: [],
                 text: '',
                 nowIndex: -1,
+                url:'https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&rsv_idx=1&tn=90117853_hao_pg&wd=',
+                urljsonp:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=',
 			}
 		},
 		mounted(){
@@ -63,6 +65,26 @@
 			changescope(ev){
 				this.flag=false;
 				this.conver='搜索'+ev.target.innerHTML;
+				//url和urljsonp有问题
+				if(this.conver='搜索朋友圈'){
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}else if(this.conver='搜索文章'){
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}else if(this.conver='搜索公众号'){
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}else if(this.conver='搜索小程序'){
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}else if(this.conver='搜索音乐'){
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}else{
+					/*this.url='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';
+					this.urljsonp='https://www.so.com/s?ie=utf-8&fr=none&src=360sou_newhome&q=';*/
+				}
 			},
 			goback(){
 				this.$router.go(-1);
@@ -72,16 +94,16 @@
 					return false;
 				}
 				if(ev.keyCode == 13){
-					window.open("https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&rsv_idx=1&tn=90117853_hao_pg&wd=" + this.inputText);
+					window.open(this.url + this.inputText);
 				}
 				// jsonp获取百度的搜索关键字
-				this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + this.inputText + "",{
+				this.$http.jsonp(this.urljsonp + this.inputText + "",{
 					jsonp:"cb"          // callback函数名
 				}).then(function(res){
 					this.result = res.data.s;       // 存入搜索数据
-				}, function(){
+				}, /*function(){
 					console.log(res.status)
-				})},
+				}*/)},
 		        // 键盘下拉事件
 		        changeDown: function(){
 		            this.now++;
@@ -101,7 +123,7 @@
 		},
 		watch:{
 			inputText(){
-				if(this.inputText !=''){
+				if(this.inputText !=''||this.inputText === 'undefined'){
 					this.flag=false;
 				}else{
 					this.flag=true;
